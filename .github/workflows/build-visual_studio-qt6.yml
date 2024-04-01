@@ -25,7 +25,7 @@ jobs:
         with:
           repository: 'jbg77/chiaki'
           submodules: 'recursive'
-          path: 'chiaki'
+          path: 'chiaki-qt6'
 
       - name: Setup NASM
         run: |
