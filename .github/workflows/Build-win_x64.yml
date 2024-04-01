@@ -12,9 +12,12 @@ jobs:
   call-build-win_x64-msys2:
     name: Build win_x64 MSYS2
     uses: ./.github/workflows/build-msys2.yml
+  call-build-win_x64-vc-Qt6:
+    name: Build win_x64 VC Qt6
+    uses: ./.github/workflows/build-visual_studio-qt6.yml
   create-release:
     name: Create Release
-    needs: [call-build-win_x64-vc, call-build-win_x64-msys2]
+    needs: [call-build-win_x64-vc, call-build-win_x64-msys2, call-build-win_x64-vc-Qt6]
     runs-on: windows-2022
     steps:
       - name: Download win_x64 artifacts
