@@ -95,7 +95,7 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install --upgrade setuptools wheel
           python3 -m pip install --user --upgrade scons protobuf grpcio-tools pyinstaller
-          python3 -c 'import google.protobuf; print(google.protobuf.__file__)'
+      #   python3 -c 'import google.protobuf; print(google.protobuf.__file__)'
 
       # aqt list-qt windows desktop --modules 6.7.0 win64_msvc2019_64
       # debug_info qt3d qt5compat qtactiveqt qtcharts qtconnectivity qtdatavis3d
