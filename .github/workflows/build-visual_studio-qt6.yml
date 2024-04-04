@@ -30,17 +30,17 @@ jobs:
       - name: Setup NASM
         run: |
           $ProgressPreference = 'SilentlyContinue'
-          Invoke-WebRequest -UseBasicParsing -Uri "https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/win64/nasm-2.15.05-win64.zip" -OutFile ".\nasm-2.15.05-win64.zip"
-          Expand-Archive -LiteralPath "nasm-2.15.05-win64.zip" -DestinationPath "."
-          Rename-Item "nasm-2.15.05" "nasm"
+          Invoke-WebRequest -UseBasicParsing -Uri "https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/win64/nasm-2.16.01-win64.zip" -OutFile ".\nasm-2.16.01-win64.zip"
+          Expand-Archive -LiteralPath "nasm-2.16.01-win64.zip" -DestinationPath "."
+          Rename-Item "nasm-2.16.01" "nasm"
           Write-Output "${{ github.workspace }}\nasm" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Setup ffmpeg
         run: |
           $ProgressPreference = 'SilentlyContinue'
-          Invoke-WebRequest -UseBasicParsing -Uri "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n5.1-latest-win64-gpl-shared-5.1.zip" -OutFile ".\ffmpeg-n5.1-latest-win64-gpl-shared-5.1.zip"
-          Expand-Archive -LiteralPath "ffmpeg-n5.1-latest-win64-gpl-shared-5.1.zip" -DestinationPath "."
-          Rename-Item "ffmpeg-n5.1-latest-win64-gpl-shared-5.1" "ffmpeg"
+          Invoke-WebRequest -UseBasicParsing -Uri "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip"
+          Expand-Archive -LiteralPath "ffmpeg-master-latest-win64-gpl.zip" -DestinationPath "."
+          Rename-Item "ffmpeg-master-latest-win64-gpl" "ffmpeg"
           Write-Output "${{ github.workspace }}\ffmpeg\bin" | Out-File -FilePath $Env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Setup protoc
@@ -53,9 +53,9 @@ jobs:
       - name: Setup nanopb
         run: |
           $ProgressPreference = 'SilentlyContinue'
-          Invoke-WebRequest -UseBasicParsing -Uri "https://jpa.kapsi.fi/nanopb/download/nanopb-0.4.6-windows-x86.zip" -OutFile ".\nanopb-0.4.6-windows-x86.zip"
-          Expand-Archive -LiteralPath "nanopb-0.4.6-windows-x86.zip" -DestinationPath "."
-          Rename-Item "nanopb-0.4.6-windows-x86" "nanopb"
+          Invoke-WebRequest -UseBasicParsing -Uri "https://jpa.kapsi.fi/nanopb/download/nanopb-0.4.8-windows-x86.zip" -OutFile ".\nanopb-0.4.8-windows-x86.zip"
+          Expand-Archive -LiteralPath "nanopb-0.4.8-windows-x86.zip" -DestinationPath "."
+          Rename-Item "nanopb-0.4.8-windows-x86" "nanopb"
           
       - name: Setup OpenSSL
         run: |
@@ -68,9 +68,9 @@ jobs:
       - name: Setup SDL2
         run: |
           $ProgressPreference = 'SilentlyContinue'
-          Invoke-WebRequest -UseBasicParsing -Uri "https://www.libsdl.org/release/SDL2-devel-2.30.1-VC.zip" -OutFile ".\SDL2-devel-2.30.1-VC.zip"
-          Expand-Archive -LiteralPath "SDL2-devel-2.30.1-VC.zip" -DestinationPath "."
-          Rename-Item "SDL2-2.30.1" "SDL2"
+          Invoke-WebRequest -UseBasicParsing -Uri "https://www.libsdl.org/release/SDL2-devel-2.30.2-VC.zip" -OutFile ".\SDL2-devel-2.30.2-VC.zip"
+          Expand-Archive -LiteralPath "SDL2-devel-2.30.2-VC.zip" -DestinationPath "."
+          Rename-Item "SDL2-2.30.2" "SDL2"
           Write-Output "SDL2_DIR=${{ github.workspace }}\SDL2" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
           Set-Content -Path "${{ github.workspace }}\SDL2\sdl2-config.cmake" -Value 'set(TARGET_NAME SDL2::SDL2)'
           Add-Content -Path "${{ github.workspace }}\SDL2\sdl2-config.cmake" -Value 'add_library(${TARGET_NAME} SHARED IMPORTED)'
@@ -104,12 +104,12 @@ jobs:
       - name: Setup Qt
         uses: jurplel/install-qt-action@v2
         with:
-          version: '6.2.4'
+          version: '6.7.1'
           host: 'windows'
           target: 'desktop'
           arch: 'win64_msvc2019_64'
           modules: 'qtmultimedia'
-          aqtversion: '==2.1.0'
+          aqtversion: '==2.2.0'
 
       - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
