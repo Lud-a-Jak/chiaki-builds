@@ -1,4 +1,4 @@
-name: Build Chiaki (VC Qt6)
+name: Build Chiaki (VC Qt6) bkp
 
 on:
   workflow_dispatch:
